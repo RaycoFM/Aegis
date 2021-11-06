@@ -1,0 +1,31 @@
+{{#if user}}
+  <header class=" fijada top-left">
+		<div class="menu_bar">
+			<a href="#" class="bt-menu"><span class="fa fa-bars"></span>Menu</a>
+		</div>
+
+		<nav>
+			<ul>
+				<li><a href="/heroes/Lightbearer/{{user.idjugador}}"><img src="../../img/heroes/Lightbearer/Lightbearer.png" alt="..." class="card-img-nav">Lightbearer</a></li>
+				<li><a href="/heroes/Mauler/{{user.idjugador}}"><img src="../../img/heroes/Mauler/Mauler.png" alt="..." class="card-img-nav">    Mauler</a></li>
+				<li><a href="/heroes/Wilder/{{user.idjugador}}"><img src="../../img/heroes/Wilder/Wilder.png" alt="..." class="card-img-nav">    Wilder</a></li>
+				<li><a href="/heroes/Graveborn/{{user.idjugador}}"><img src="../../img/heroes/Graveborn/Graveborn.png" alt="..." class="card-img-nav"> Graveborn</a></li>
+				<li><a href="/heroes/Celestial/{{user.idjugador}}"><img src="../../img/heroes/Celestial/Celestial.png" alt="..." class="card-img-nav">   Celestial</a></li>
+				<li><a href="/heroes/Hypogean/{{user.idjugador}}"><img src="../../img/heroes/Hypogean/Hypogean.png" alt="..." class="card-img-nav">  Hypogean</a></li>
+				<li><a href="/heroes/Dimensional/{{user.idjugador}}"><img src="../../img/heroes/Dimensional/Dimensional.png" alt="..." class="card-img-nav">Dimensional</a></li>
+
+        <li><a href="/links/profile/{{user.idjugador}}"><img src="../../img/profile.png" alt="..." class="card-img-nav">    Profile</a></li>
+        <li><a href="/links/aegis/{{user.idjugador}}"><img src="../../img/aegis.png" alt="..." class="card-img-nav">     Aegis™</a></li>
+		
+		{{#if user.admin}}
+        <li><a href="/links/setting"><img src="../../img/setting.png" alt="..." class="card-img-nav">   Setting</a></li>
+		{{/if}}
+
+        <li><a href="/logout"><img src="../../img/exit.ico" alt="..." class="card-img-nav">    Log Out</a></li>
+
+			</ul>
+		</nav>
+	</header>
+{{/if}}
+
+

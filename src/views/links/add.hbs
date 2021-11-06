@@ -1,0 +1,45 @@
+<div class="container p-3">
+    
+
+        <div class="card col-md-5 m-5 mx-auto ">
+
+            <div class="m-2">
+                <form action="/links/add" method="POST">
+
+                    
+
+                    <div class="card-body btn-group w-100" role="group">
+                        <div class="text-center w-100 m-2 form-floating ">
+                          <input class="form-control text-center w-100 m-2" type="text" name="nombre" placeholder="Nombre del producto" autofocus>
+                          <label for="floatingInput">Nombre del producto</label>
+                        </div>
+
+                        <div class="text-center w-100 m-2 form-floating ">
+                          <input class="form-control text-center w-100 m-2" type="text" name="referencia" placeholder="Referencia del producto">
+                          <label for="floatingInput">Referencia del producto</label>
+                        </div>
+                    </div>
+
+                    <div class="card-body btn-group w-100" role="group">
+                        <div class="text-center w-100 m-2 form-floating ">
+                          <input type="number" step="0.01" class="form-control text-center w-100 m-2" min="0" name="precio_costo" placeholder="Precio de costo del producto">
+                          <label for="floatingInput">Precio de costo del producto</label>
+                        </div>
+
+                        <div class="text-center w-100 m-2 form-floating ">
+                          <input type="number" step="0.01" class="form-control text-center w-100 m-2" min="0" name="precio_venta" placeholder="Precio de venta del producto">
+                          <label for="floatingInput">Precio de venta del producto</label>
+                        </div>
+                    </div>
+
+                    <div class="card-body btn-group w-100" role="group">
+                        <button class="btn btn-success w-100 m-2">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    
+</div>
+

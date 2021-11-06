@@ -1,0 +1,190 @@
+<div class="container p-2">
+  <div class="row">
+    {{#each perfil}}
+    <div class="col-md-3 m-5 mx-auto" style="padding-top: 1em;">
+      <div class="card text-center card-elder" style="width: 140%;">
+
+        <div class="card card-body card_hijo">
+          <img src="../../img/elder-tree.jpg" alt="..." class="card w-100" style="height: 450px;">
+
+          <h3 class="card card-title text-uppercase "></h3>
+          <p class="card">Elder Tree</p>
+
+
+          <form action="/links/profile/{{idjugador}}" method="POST" class=" text-center">
+
+            <div class="card-body btn-group card_hijo  m-0 p-0 " role="group" aria-label="Basic example" style="width: 100%;"> 
+
+            <div class="card-body btn-group m-0 p-0 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group ">
+                <li class="list-group-item"><img src="../../img/Class/Support.png" alt="..." class="img-elder w-100" ></li>
+                <input type="number" class="text-center  w-100" min="0" value="{{support}}" name="Support"></input>
+              </ul>
+            </div>
+
+            <div class="card-body btn-group m-0 p-0 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group">
+                <li class="list-group-item"><img src="../../img/Class/Mage.png" alt="..." class="img-elder w-100" ></li>
+                <input type="number" class="text-center  w-100" min="0" value="{{mage}}" name="Mage"></input>
+              </ul>
+            </div>
+
+            <div class="card-body btn-group m-0 p-0 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group">
+                <li class="list-group-item"><img src="../../img/Class/Warrior.png" alt="..." class="img-elder w-100" ></li>
+                <input type="number" class="text-center  w-100" min="0" value="{{warrior}}" name="Warrior"></input>
+              </ul>
+            </div>
+
+            <div class="card-body btn-group m-0 p-0 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group">
+                <li class="list-group-item"><img src="../../img/Class/Tank.png" alt="..." class="img-elder w-100" ></li>
+                <input type="number" class="text-center  w-100" min="0" value="{{tank}}" name="Tank"></input>
+              </ul>
+            </div>
+
+            <div class="card-body btn-group m-0 p-0 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group ">
+                <li class="list-group-item"><img src="../../img/Class/Ranger.png" alt="..." class="img-elder  w-100" ></li>
+                <input type="number" class="text-center  w-100" min="0" value="{{ranger}}" name="Ranger"></input>
+              </ul>
+            </div>
+
+            </div>
+            
+            <button class="btn btn-success w-100 mt-2 ">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 m-5 mx-auto" style="padding-top: 1em;">
+      <div class="card text-center"  style="width: 150%;">
+
+        <div class="card card-body card_hijo">
+          <img src="../../img/cristal.jpg" alt="..." class="card w-100"  style="height: 450px;">
+
+          <h3 class="card card-title text-uppercase "></h3>
+          <p class="card">Resonating Crystal</p>
+
+
+          <form action="/links/profile/{{idjugador}}" method="POST" class="card text-center">
+
+            <div class="card-body btn-group" role="group" aria-label="Basic example">
+              <input type="number" class="text-center  w-50" min="0" value="{{cristal}}" name="Cristal"></input>
+              <!--a href="/links/delete/{{id}}" class="btn btn-danger w-25" role="button">Reset</a-->
+              <!--button  class="btn btn-danger w-25">Reset</button-->
+              <!--button class="btn btn-primary w-25">Quitar</button-->
+              <button class="btn btn-success w-50">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 m-5 mx-auto" style="padding-top: 1em;">
+      <div class="card text-center"  style="width: 150%; ">
+
+
+          <form action="/links/profile/{{idjugador}}" method="POST" class="card text-center">
+
+          <div class="card-body btn-group card_hijo m-1 p-2" role="group" aria-label="Basic example" style="width: 100%;"> 
+
+            <div class="card-body btn-group m-1 p-1 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group ">
+                <li class="list-group-item"><img src="../../img/Tower/Tower Light.png" alt="..." class="img-elder" style="height: 100px; width: 90px;" ></li>
+
+                <div class="card-body m-0 p-0 w-100" role="group" aria-label="Basic example" style="height: 30px;">
+                 <p class="card w-100 m-0 p-0" style="height: 30px;">Tower Light</p>
+                 <input type="number" class="text-center  w-100 m-0 p-0" min="0" value="{{light}}" name="TowerLight" style="height: 30px;"></input>
+                </div>
+              </ul>
+            </div>
+
+            <div class="card-body btn-group m-1 p-1 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group ">
+                <li class="list-group-item"><img src="../../img/Tower/Tower Wilder.png" alt="..." class="img-elder" style="height: 100px; width: 90px;" ></li>
+
+                <div class="card-body m-0 p-0 w-100" role="group" aria-label="Basic example" style="height: 30px;">
+                 <p class="card w-100 m-0 p-0" style="height: 30px;">Tower Wilder</p>
+                 <input type="number" class="text-center  w-100 m-0 p-0" min="0" value="{{wilder}}" name="TowerWilder" style="height: 30px;"></input>
+                </div>
+              </ul>
+            </div>
+
+            <div class="card-body btn-group m-1 p-1 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group ">
+                <li class="list-group-item"><img src="../../img/Tower/Tower Graveborn.png" alt="..." class="img-elder" style="height: 100px; width: 90px;" ></li>
+
+                <div class="card-body m-0 p-0 w-100" role="group" aria-label="Basic example" style="height: 30px;">
+                 <p class="card w-100 m-0 p-0" style="height: 30px;">Tower Graveborn</p>
+                 <input type="number" class="text-center  w-100 m-0 p-0" min="0" value="{{graveborn}}" name="TowerGraveborn" style="height: 30px;"></input>
+                </div>
+              </ul>
+            </div>
+
+         </div>
+
+         <div class="card-body btn-group card_hijo  m-1 p-2 " role="group" aria-label="Basic example" style="width: 100%;"> 
+
+            <div class="card-body btn-group m-1 p-1 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group ">
+                <li class="list-group-item"><img src="../../img/Tower/Tower Mauler.png" alt="..." class="img-elder" style="height: 100px; width: 90px;" ></li>
+
+                <div class="card-body m-0 p-0 w-100" role="group" aria-label="Basic example" style="height: 30px;">
+                 <p class="card w-100 m-0 p-0" style="height: 30px;">Tower Mauler</p>
+                 <input type="number" class="text-center  w-100 m-0 p-0" min="0" value="{{mauler}}" name="TowerMauler" style="height: 30px;"></input>
+                </div>
+              </ul>
+            </div>
+
+            <div class="card-body btn-group m-1 p-1 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group ">
+                <li class="list-group-item"><img src="../../img/Tower/Tower Celestial.png" alt="..." class="img-elder" style="height: 100px; width: 90px;" ></li>
+
+                <div class="card-body m-0 p-0 w-100" role="group" aria-label="Basic example" style="height: 30px;">
+                 <p class="card w-100 m-0 p-0" style="height: 30px;">Tower Celestial</p>
+                 <input type="number" class="text-center  w-100 m-0 p-0" min="0" value="{{celestial}}" name="TowerCelestial" style="height: 30px;"></input>
+                </div>
+              </ul>
+            </div>
+
+            <div class="card-body btn-group m-1 p-1 card-elder" role="group" aria-label="Basic example" >
+              <ul class="list-group list-group ">
+                <li class="list-group-item"><img src="../../img/Tower/Tower Hypogean.png" alt="..." class="img-elder" style="height: 100px; width: 90px;" ></li>
+
+                <div class="card-body m-0 p-0 w-100" role="group" aria-label="Basic example" style="height: 30px;">
+                 <p class="card w-100 m-0 p-0" style="height: 30px;">Tower Hypogean</p>
+                 <input type="number" class="text-center  w-100 m-0 p-0" min="0" value="{{hypogean}}" name="TowerHypogean" style="height: 30px;"></input>
+                </div>
+              </ul>
+            </div>
+
+         </div>
+
+         
+
+          
+
+        <div class="card-body m-0 p-5" role="group" aria-label="Basic example" style="height: 240px;">
+          <li class="list-group-item"><img src="../../img/Tower/King Tower.png" alt="..." class="img-elder" ></li>
+                
+           <div class="card-body btn-group m-0 p-0 w-100" role="group" aria-label="Basic example" style="height: 30px;">
+              <p class="card w-50 " style="height: 30px;">Tower King</p>
+              <input type="number" class="text-center  w-50" min="0" value="{{king}}" name="TowerKing" style="height: 30px;"></input>
+            </div>
+                 
+        </div>
+
+                   
+            <div class="card-body btn-group" role="group" aria-label="Basic example">
+              <button class="btn btn-success w-100">Update</button>
+            </div>
+          </form>
+        
+      </div>
+    </div>
+
+    {{/each}}   
+  </div>
+</div>
