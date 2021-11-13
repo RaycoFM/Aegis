@@ -6,6 +6,10 @@
     "scripts": {
         "dev": "nodemon src/index.js"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/RaycoFM/Aegis.git"
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",
