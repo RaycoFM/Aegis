@@ -24,9 +24,11 @@ router.get('/aegis/:idjugador', isLoggedIn, async(req, res) => {
 
     const { idjugador } = req.params;
 
+    const heronames = await pool.query('SELECT heroname FROM heroes order by heroname');
+
     const user = await pool.query('SELECT * FROM users WHERE idjugador = ?', [idjugador]);
 
-    res.render('links/aegis')
+    res.render('links/aegis', { heronames })
 });
 
 router.post('/profile/:idjugador', isLoggedIn, async(req, res) => {
@@ -206,6 +208,25 @@ router.post('/adduser', isLoggedIn, async(req, res) => {
     }
 
 
+
+    res.redirect('setting');
+});
+
+
+router.post('/modifyuser', isLoggedIn, async(req, res) => {
+
+    const { idjugador } = req.body;
+    var { admin } = req.body;
+    var { aegis } = req.body;
+
+    if (admin) {
+        admin = 1;
+    } else {
+        admin = 0;
+    }
+
+    //const id = await pool.query('SELECT id FROM users WHERE idgugador = ?', [idjugador]);
+    await pool.query('UPDATE users SET aegis = ?, admin = ? WHERE (idjugador = ?);', [aegis, admin, idjugador]);
 
     res.redirect('setting');
 });
