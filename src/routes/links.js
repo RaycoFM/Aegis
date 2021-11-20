@@ -115,6 +115,17 @@ router.post('/aegis', isLoggedIn, async(req, res) => {
 
                     if (ruleshero[i].nivelascension <= queryhero1[k].ascension.split('-')[1]) {
 
+                        if (ruleshero[i].nivelascension == '7') {
+
+                            if (ruleshero[i].star <= queryhero1[k].star.substr(1, 1)) {
+                                queryhero1[k].ascension = queryhero1[k].ascension.split('-')[0];
+                            } else {
+                                var item = queryhero1.indexOf(k);
+                                queryhero1.splice(item, 1);
+                                k = k - 1;
+                            }
+                        }
+
                     } else {
                         var item = queryhero1.indexOf(k);
                         queryhero1.splice(item, 1);
@@ -122,16 +133,6 @@ router.post('/aegis', isLoggedIn, async(req, res) => {
 
                     }
 
-                    if (ruleshero[i].nivelascension == '7') {
-
-                        if (ruleshero[i].star <= queryhero1[k].star.substr(1, 1)) {
-                            queryhero1[k].ascension = queryhero1[k].ascension.split('-')[0];
-                        } else {
-                            var item = queryhero1.indexOf(k);
-                            queryhero1.splice(item, 1);
-                            k = k - 1;
-                        }
-                    }
                 }
             }
 
@@ -140,27 +141,38 @@ router.post('/aegis', isLoggedIn, async(req, res) => {
                 for (let k = 0; k < queryhero2.length; k++) {
                     if (ruleshero[i].nivelascension <= queryhero2[k].ascension.split('-')[1]) {
 
+                        if (ruleshero[i].nivelascension == '7') {
+                            if (ruleshero[i].star <= queryhero2[k].star.substr(1, 1)) {
+                                queryhero2[k].ascension = queryhero2[k].ascension.split('-')[0];
+                            } else {
+                                var item = queryhero2.indexOf(k);
+                                queryhero2.splice(item, 1);
+                                k = k - 1;
+                            }
+                        }
+
                     } else {
                         var item = queryhero2.indexOf(k);
                         queryhero2.splice(item, 1);
                         k = k - 1;
                     }
 
-                    if (ruleshero[i].nivelascension == '7') {
-                        if (ruleshero[i].star <= queryhero2[k].star.substr(1, 1)) {
-                            queryhero2[k].ascension = queryhero2[k].ascension.split('-')[0];
-                        } else {
-                            var item = queryhero2.indexOf(k);
-                            queryhero2.splice(item, 1);
-                            k = k - 1;
-                        }
-                    }
+
                 }
             }
 
             if (queryhero3 != null) {
                 for (let k = 0; k < queryhero3.length; k++) {
                     if (ruleshero[i].nivelascension <= queryhero3[k].ascension.split('-')[1]) {
+                        if (ruleshero[i].nivelascension == '7') {
+                            if (ruleshero[i].star <= queryhero3[k].star.substr(1, 1)) {
+                                queryhero3[k].ascension = queryhero3[k].ascension.split('-')[0];
+                            } else {
+                                var item = queryhero3.indexOf(k);
+                                queryhero3.splice(item, 1);
+                                k = k - 1;
+                            }
+                        }
 
                     } else {
                         var item = queryhero3.indexOf(k);
@@ -168,24 +180,16 @@ router.post('/aegis', isLoggedIn, async(req, res) => {
                         k = k - 1;
                     }
 
-                    if (ruleshero[i].nivelascension == '7') {
-                        if (ruleshero[i].star <= queryhero3[k].star.substr(1, 1)) {
-                            queryhero3[k].ascension = queryhero3[k].ascension.split('-')[0];
-                        } else {
-                            var item = queryhero3.indexOf(k);
-                            queryhero3.splice(item, 1);
-                            k = k - 1;
-                        }
-                    }
+
                 }
             }
 
-            var cumple = 0;
+            var cumple = false;
 
             if (queryuser[c].aegis == '1') {
                 for (let k = 0; k < queryhero1.length; k++) {
                     if (queryhero1[k].idjugador == queryuser[c].idjugador) {
-                        cumple = 1;
+                        cumple = true;
                         cont = cont + 1;
                         break;
                     }
@@ -195,7 +199,7 @@ router.post('/aegis', isLoggedIn, async(req, res) => {
             if (queryuser[c].aegis == '2') {
                 for (let k = 0; k < queryhero2.length; k++) {
                     if (queryhero2[k].idjugador == queryuser[c].idjugador) {
-                        cumple = 1;
+                        cumple = true;
                         cont = cont + 1;
                         break;
                     }
@@ -205,7 +209,7 @@ router.post('/aegis', isLoggedIn, async(req, res) => {
             if (queryuser[c].aegis == '3') {
                 for (let k = 0; k < queryhero3.length; k++) {
                     if (queryhero3[k].idjugador == queryuser[c].idjugador) {
-                        cumple = 1;
+                        cumple = true;
                         cont = cont + 1;
                         break;
                     }

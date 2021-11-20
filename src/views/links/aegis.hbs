@@ -358,7 +358,12 @@
                 <td>{{username}}</td>
                 <td>{{porciento}}</td>
                 {{#each evaluar}}
-                <td>{{cumple}}</td>
+                    {{#if cumple}}
+                        <td style="background-color: #32CD32;"></td>
+                    {{else}}
+                        <td style="background-color: #FF0000;"></td>
+                    {{/if}}
+
                 {{/each}} 
                 
             </tr>
