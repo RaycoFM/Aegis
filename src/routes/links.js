@@ -8,6 +8,11 @@ const LocalStrategy = require('passport-local').Strategy;
 const helpers = require('../lib/helpers');
 
 
+var ruleshero = [];
+var playerruleshero = [];
+var numhero = 0;
+
+
 router.get('/add', isLoggedIn, (req, res) => {
     res.render('links/add');
 });
@@ -20,15 +25,218 @@ router.get('/profile/:idjugador', isLoggedIn, async(req, res) => {
     res.render('links/profile', { perfil })
 });
 
-router.get('/aegis/:idjugador', isLoggedIn, async(req, res) => {
+router.get('/aegis', isLoggedIn, async(req, res) => {
 
-    const { idjugador } = req.params;
+
+    ruleshero = [];
+    playerruleshero = [];
+    numhero = 0;
 
     const heronames = await pool.query('SELECT heroname FROM heroes order by heroname');
 
-    const user = await pool.query('SELECT * FROM users WHERE idjugador = ?', [idjugador]);
 
     res.render('links/aegis', { heronames })
+});
+
+router.post('/aegis', isLoggedIn, async(req, res) => {
+
+    playerruleshero = [];
+
+    var { heroname } = req.body;
+    var { ascension } = req.body;
+    var { star } = req.body;
+    var { engravings } = req.body;
+    var { si } = req.body;
+    var { fi } = req.body;
+    var { aegis1 } = req.body;
+    var { aegis2 } = req.body;
+    var { aegis3 } = req.body;
+    var aegis = "";
+
+    var nivelascension = ascension.split('-')[1];
+    var ascensionreal = ascension.split('-')[0];
+
+    var queryhero1;
+    var queryhero2;
+    var queryhero3;
+    var starquery = '%' + star + '%';
+
+    var queryuser = await pool.query('SELECT * FROM users');
+
+    numhero += 1;
+
+    if (!aegis1 && !aegis2 && !aegis3) {
+        aegis = "1 2 3";
+    }
+
+    var rulehero = {
+        numhero,
+        heroname,
+        ascensionreal,
+        nivelascension,
+        star,
+        engravings,
+        si,
+        fi,
+        aegis
+    };
+
+    ruleshero.push(rulehero);
+
+    //await pool.query('UPDATE users SET aegis = ?, admin = ? WHERE (idjugador = ?);', [aegis, admin, idjugador]);
+
+    for (let c = 0; c < queryuser.length; c++) {
+
+        var evaluar = [];
+        var username = queryuser[c].username;
+        var cont = 0;
+
+        for (let i = 0; i < ruleshero.length; i++) {
+
+
+            if (!ruleshero[i].aegis1 && !ruleshero[i].aegis2 && !ruleshero[i].aegis3) {
+                ruleshero[i].aegis1 = true;
+                ruleshero[i].aegis2 = true;
+                ruleshero[i].aegis3 = true;
+            }
+
+            if (ruleshero[i].aegis1) {
+                queryhero1 = await pool.query('SELECT * FROM users INNER JOIN card ON users.idjugador = card.idjugador and card.heroname=? and card.engravings>=? and card.si>=? and card.fi>=?  and users.aegis= ?;', [ruleshero[i].heroname, ruleshero[i].engravings, ruleshero[i].si, ruleshero[i].fi, '1']);
+            }
+            if (ruleshero[i].aegis2) {
+                queryhero2 = await pool.query('SELECT * FROM users INNER JOIN card ON users.idjugador = card.idjugador and card.heroname=? and card.engravings>=? and card.si>=? and card.fi>=?  and users.aegis= ?;', [ruleshero[i].heroname, ruleshero[i].engravings, ruleshero[i].si, ruleshero[i].fi, '2']);
+            }
+            if (ruleshero[i].aegis3) {
+                queryhero3 = await pool.query('SELECT * FROM users INNER JOIN card ON users.idjugador = card.idjugador and card.heroname=? and card.engravings>=? and card.si>=? and card.fi>=?  and users.aegis= ?;', [ruleshero[i].heroname, ruleshero[i].engravings, ruleshero[i].si, ruleshero[i].fi, '3']);
+            }
+
+            if (queryhero1 != null) {
+                for (let k = 0; k < queryhero1.length; k++) {
+
+                    if (ruleshero[i].nivelascension <= queryhero1[k].ascension.split('-')[1]) {
+
+                    } else {
+                        var item = queryhero1.indexOf(k);
+                        queryhero1.splice(item, 1);
+                        k = k - 1;
+
+                    }
+
+                    if (ruleshero[i].nivelascension == '7') {
+
+                        if (ruleshero[i].star <= queryhero1[k].star.substr(1, 1)) {
+                            queryhero1[k].ascension = queryhero1[k].ascension.split('-')[0];
+                        } else {
+                            var item = queryhero1.indexOf(k);
+                            queryhero1.splice(item, 1);
+                            k = k - 1;
+                        }
+                    }
+                }
+            }
+
+
+            if (queryhero2 != null) {
+                for (let k = 0; k < queryhero2.length; k++) {
+                    if (ruleshero[i].nivelascension <= queryhero2[k].ascension.split('-')[1]) {
+
+                    } else {
+                        var item = queryhero2.indexOf(k);
+                        queryhero2.splice(item, 1);
+                        k = k - 1;
+                    }
+
+                    if (ruleshero[i].nivelascension == '7') {
+                        if (ruleshero[i].star <= queryhero2[k].star.substr(1, 1)) {
+                            queryhero2[k].ascension = queryhero2[k].ascension.split('-')[0];
+                        } else {
+                            var item = queryhero2.indexOf(k);
+                            queryhero2.splice(item, 1);
+                            k = k - 1;
+                        }
+                    }
+                }
+            }
+
+            if (queryhero3 != null) {
+                for (let k = 0; k < queryhero3.length; k++) {
+                    if (ruleshero[i].nivelascension <= queryhero3[k].ascension.split('-')[1]) {
+
+                    } else {
+                        var item = queryhero3.indexOf(k);
+                        queryhero3.splice(item, 1);
+                        k = k - 1;
+                    }
+
+                    if (ruleshero[i].nivelascension == '7') {
+                        if (ruleshero[i].star <= queryhero3[k].star.substr(1, 1)) {
+                            queryhero3[k].ascension = queryhero3[k].ascension.split('-')[0];
+                        } else {
+                            var item = queryhero3.indexOf(k);
+                            queryhero3.splice(item, 1);
+                            k = k - 1;
+                        }
+                    }
+                }
+            }
+
+            var cumple = 0;
+
+            if (queryuser[c].aegis == '1') {
+                for (let k = 0; k < queryhero1.length; k++) {
+                    if (queryhero1[k].idjugador == queryuser[c].idjugador) {
+                        cumple = 1;
+                        cont = cont + 1;
+                        break;
+                    }
+                }
+            }
+
+            if (queryuser[c].aegis == '2') {
+                for (let k = 0; k < queryhero2.length; k++) {
+                    if (queryhero2[k].idjugador == queryuser[c].idjugador) {
+                        cumple = 1;
+                        cont = cont + 1;
+                        break;
+                    }
+                }
+            }
+
+            if (queryuser[c].aegis == '3') {
+                for (let k = 0; k < queryhero3.length; k++) {
+                    if (queryhero3[k].idjugador == queryuser[c].idjugador) {
+                        cumple = 1;
+                        cont = cont + 1;
+                        break;
+                    }
+                }
+            }
+
+            var datarule = {
+                cumple
+            };
+
+            evaluar.push(datarule);
+        }
+
+        var porciento = cont / ruleshero.length * 100;
+
+        var player = {
+            username,
+            porciento,
+            evaluar
+        };
+
+
+        playerruleshero.push(player);
+    }
+
+    console.log(playerruleshero);
+
+    const heronames = await pool.query('SELECT heroname FROM heroes order by heroname');
+
+    res.render('links/aegis', { heronames, ruleshero, playerruleshero })
+
 });
 
 router.post('/profile/:idjugador', isLoggedIn, async(req, res) => {
@@ -422,6 +630,10 @@ router.post('/edit/:faction/:heroname', isLoggedIn, async(req, res) => {
 
     if (star == "" || star == "0") {
         Star = "A0";
+    }
+    if (ascension.split('-')[0] != "Ascended") {
+        Star = "A0";
+
     }
 
 

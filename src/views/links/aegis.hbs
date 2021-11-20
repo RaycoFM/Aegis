@@ -6,14 +6,14 @@
             <div class="card card-body card_hijo" >
                     <h4>HERO RULE</h4>
 
-                <form class="row g-3">
+                <form action="/links/aegis" method="POST" class="row g-3">
                     <div class="col-md-6">
                         <div class="card-body btn-group m-0 p-0 card-elder w-100" role="group" aria-label="Basic example" >
                             <ul class="list-group list-group w-100">
                                 <h6>Hero Name</h6>
                                 <select name="heroname">
                                     {{#each heronames}}
-                                        <option value="Ranger">{{heroname}}</option>
+                                        <option >{{heroname}}</option>
                                     {{/each}}
                                 </select>
                             </ul>
@@ -25,14 +25,14 @@
                                 <ul class="list-group list-group w-100">
                                     <h6>Ascension</h6>
                                     <select class="text-center" name="ascension">
-                                        <option value="Not Acquired">Not Acquired</option>
-                                        <option value="Elite">Elite</option>
-                                        <option value="Elite+">Elite+</option>
-                                        <option value="Legendary">Legendary</option>
-                                        <option value="Legendary+">Legendary+</option>
-                                        <option value="Mythic">Mythic</option>
-                                        <option value="Mythic+">Mythic+</option>
-                                        <option value="Ascended">Ascended</option>
+                                        <option value="Not Acquired-0">Not Acquired</option>
+                                        <option value="Elite-1">Elite</option>
+                                        <option value="Elite+-2">Elite+</option>
+                                        <option value="Legendary-3">Legendary</option>
+                                        <option value="Legendary+-4">Legendary+</option>
+                                        <option value="Mythic-5">Mythic</option>
+                                        <option value="Mythic+-6">Mythic+</option>
+                                        <option value="Ascended-7">Ascended</option>
                                     </select>
                                 </ul>
                         </div>
@@ -167,7 +167,6 @@
                                 <ul class="list-group list-group  w-100">
                                     <h6>Signature Items</h6>
                                     <select class="text-center" name="si">
-                                        <option selected="true">{{si}}</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>  
@@ -220,7 +219,6 @@
                                 <ul class="list-group list-group  w-100">
                                     <h6>Furniture Items</h6>
                                     <select class="text-center" name="fi">
-                                        <option selected="true">{{fi}}</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>  
@@ -254,31 +252,123 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
-                        <div class="card-body btn-group m-0 p-0 card-elder w-100" role="group" aria-label="Basic example" >
-                                <ul class="list-group list-group  w-100">
-                                    <div class="form-group card-body btn-group card_hijo w-100">
-                                        <h5><input class="form-check-input w=25" type="radio" name="aegis" id="gridRadios1" value="1" checked>Aegis 1</h5>
-                                        <p>      </p>
-                                        <h5><input class="form-check-input" type="radio" name="aegis" id="gridRadios2" value="2">Aegis 2</h5>
-                                        <p>      </p>
-                                        <h5><input class="form-check-input" type="radio" name="aegis" id="gridRadios3" value="3">Aegis 3</h5>
-                                    </div>
-                               </ul>
-                        </div>
-                    </div>     
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <input type="checkbox" class="btn-check" id="btncheck1" name="aegis1" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="btncheck1" checked>Aegis 1</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck2" name="aegis2" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="btncheck2">Aegis 2</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck3" name="aegis3" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="btncheck3">Aegis 3</label>
+                    </div>
                 </div>
 
                     
                     
                     <div class="form-group p-2">
                          <h1><button class="btn btn-success w-100">ADD</button></h1>
-                     </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
   </div>
+
+  <table class="table">
+
+  <thead class="table-dark w-100">
+    <tr>
+      <th class="table-dark w-100 text-center" style="padding-top: 1em;">HERO RULES</th>
+    </tr>
+  </thead>
+
+  </table>
+
+  <table class="table" >
+
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hero Name</th>
+      <th scope="col">Ascension</th>
+      <th scope="col">Star</th>
+      <th scope="col">Engravings</th>
+      <th scope="col">Signature Items</th>
+      <th scope="col">Furniture Items</th>
+      <th scope="col">Aegis</th>
+    </tr>
+  </thead>
+
+    <tbody>
+        {{#each ruleshero}}
+            <tr>
+
+                <th scope="row">{{numhero}}</th>
+                <td>{{heroname}}</td>
+                <td>{{ascensionreal}}</td>
+                <td>{{star}}</td>
+                <td>{{engravings}}</td>
+                <td>{{si}}</td>
+                <td>{{fi}}</td>
+                <td>{{aegis}}</td>
+            </tr>
+        {{/each}}    
+        
+        
+
+    </tbody>
+</table>
+
+<p> </p>
+<p> </p>
+
+<table class="table">
+
+  <thead class="w-100">
+    <tr>
+      <th class="table-dark w-100 text-center" style="padding-top: 1em;">PLAYERS WHO MEET THE REQUIREMENTS</th>
+    </tr>
+  </thead>
+
+  </table>
+
+  <table class="table" >
+
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">PLAYERS</th>
+      <th scope="col"> % </th>
+        {{#each ruleshero}}
+            <th scope="col">{{numhero}}</th>
+            
+        {{/each}}  
+      
+    </tr>
+  </thead>
+
+    <tbody>
+        {{#each playerruleshero}}
+            <tr>
+
+                <!--td>1</td>
+                <td>2</td>
+                <td>3</td-->
+
+                <td>{{username}}</td>
+                <td>{{porciento}}</td>
+                {{#each evaluar}}
+                <td>{{cumple}}</td>
+                {{/each}} 
+                
+            </tr>
+        {{/each}}    
+        
+        
+
+    </tbody>
+</table>
+
 </div>
 
 

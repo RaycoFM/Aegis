@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
     database: {
         host: 'localhost',
         user: 'root',
@@ -16,11 +16,11 @@ module.exports = {
     }
 };*/
 
-/*module.exports = {
+module.exports = {
     database: {
         host: 'localhost',
         user: 'root',
         password: '',
         database: 'test'
     }
-};*/
+};

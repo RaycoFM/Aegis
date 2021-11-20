@@ -24,6 +24,7 @@ router.get('/Lightbearer/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Lightbearer" and idjugador = ?', [idjugador]);
 
     for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
         if (card[i].ascension == "Not Acquired") {
             card[i].star = "Not Acquired";
             card[i].head = "Vacio"
@@ -47,6 +48,7 @@ router.get('/Mauler/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Mauler" and idjugador = ?', [idjugador]);
 
     for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
         if (card[i].ascension == "Not Acquired") {
             card[i].star = "Not Acquired";
             card[i].head = "Vacio"
@@ -71,6 +73,7 @@ router.get('/Wilder/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Wilder" and idjugador = ?', [idjugador]);
 
     for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
         if (card[i].ascension == "Not Acquired") {
             card[i].star = "Not Acquired";
             card[i].head = "Vacio"
@@ -95,6 +98,7 @@ router.get('/Graveborn/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Graveborn" and idjugador = ?', [idjugador]);
 
     for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
         if (card[i].ascension == "Not Acquired") {
             card[i].star = "Not Acquired";
             card[i].head = "Vacio"
@@ -118,6 +122,7 @@ router.get('/Celestial/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Celestial" and idjugador = ?', [idjugador]);
 
     for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
         if (card[i].ascension == "Not Acquired") {
             card[i].star = "Not Acquired";
             card[i].head = "Vacio"
@@ -141,6 +146,7 @@ router.get('/Hypogean/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Hypogean" and idjugador = ?', [idjugador]);
 
     for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
         if (card[i].ascension == "Not Acquired") {
             card[i].star = "Not Acquired";
             card[i].head = "Vacio"
@@ -165,6 +171,7 @@ router.get('/Dimensional/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Dimensional" and idjugador = ?', [idjugador]);
 
     for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
         if (card[i].ascension == "Not Acquired") {
             card[i].star = "Not Acquired";
             card[i].head = "Vacio"
@@ -227,9 +234,12 @@ router.post('/:faction/:id', isLoggedIn, async(req, res) => {
 
     }
 
-    if (card[0].ascension != "Ascended") {
+    if (card[0].ascension.split('-')[0] != "Ascended") {
         card[0].star = "0";
     }
+
+    card[0].ascension = card[0].ascension.split('-')[0];
+
 
 
 
