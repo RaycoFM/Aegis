@@ -1,4 +1,4 @@
-/*module.exports = {
+module.exports = {
     database: {
         host: 'localhost',
         user: 'root',
@@ -15,7 +15,7 @@
         database: '9042491_prueba'
     }
 };*/
-
+/*
 module.exports = {
     database: {
         host: 'localhost',
@@ -23,4 +23,4 @@ module.exports = {
         password: '',
         database: 'test'
     }
-};
+};*/
