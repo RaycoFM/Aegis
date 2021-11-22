@@ -333,93 +333,107 @@ router.post('/adduser', isLoggedIn, async(req, res) => {
     newUser.password = await helpers.encryptPassword(password);
 
 
+    const user = await pool.query('SELECT * FROM users');
+    // Verificar si el jugador existe
 
-    const result1 = await pool.query('INSERT INTO users SET ? ', [newUser]);
-
-    const heroes = await pool.query('SELECT * FROM heroes');
-    const cant = await pool.query('SELECT COUNT(*) FROM heroes');
-
-    const artefacto = "0";
-    const artefactovalue = "Dura's Blade";
-    const ascension = "Not Acquired";
-    const star = "A0";
-    const engravings = "0";
-    const fi = "0";
-    const si = "0";
-    const head = "Vacio";
-    const body = "Vacio";
-    const boots = "Vacio";
-    const weapon = "Vacio";
-
-    const cristal = "0";
-
-    const king = "0";
-    const hypogean = "0";
-    const celestial = "0";
-    const mauler = "0";
-    const graveborn = "0";
-    const wilder = "0";
-    const light = "0";
-
-    const support = "0";
-    const mage = "0";
-    const warrior = "0";
-    const tank = "0";
-    const ranger = "0";
-
-    const newPerfil = {
-        idjugador,
-        mage,
-        ranger,
-        support,
-        tank,
-        warrior,
-        cristal,
-        king,
-        celestial,
-        graveborn,
-        hypogean,
-        light,
-        mauler,
-        wilder
-    };
-
-    const result3 = await pool.query('INSERT INTO perfil SET ?', [newPerfil]);
-
-    for (let i = 0; i < heroes.length; i++) {
-
-        //req.flash('success', ' Probando');
-
-        const heroname = heroes[i].heroname;
-        const clase = heroes[i].clas;
-        const faction = heroes[i].faction;
-        const roll = heroes[i].roll;
-        const attribute = heroes[i].attribute;
-
-        const newCard = {
-            idjugador,
-            heroname,
-            artefacto,
-            artefactovalue,
-            ascension,
-            star,
-            clase,
-            faction,
-            engravings,
-            fi,
-            si,
-            head,
-            body,
-            boots,
-            weapon,
-            roll,
-            attribute
-        };
-
-        const result2 = await pool.query('INSERT INTO card SET ?', [newCard]);
+    var existe = false;
+    var name = ""
+    for (let i = 0; i < user.length; i++) {
+        if (user[i].idjugador == idjugador) {
+            existe = true;
+            name = user[i].username;
+        }
     }
 
+    if (existe) {
+        req.flash('message', 'El jugador con esa id ya existe bajo el nombre de ' + name);
+    } else {
 
+        const result1 = await pool.query('INSERT INTO users SET ? ', [newUser]);
+
+        const heroes = await pool.query('SELECT * FROM heroes');
+        const cant = await pool.query('SELECT COUNT(*) FROM heroes');
+
+        const artefacto = "0";
+        const artefactovalue = "Dura's Blade";
+        const ascension = "Not Acquired-0";
+        const star = "A0";
+        const engravings = "0";
+        const fi = "0";
+        const si = "0";
+        const head = "Vacio";
+        const body = "Vacio";
+        const boots = "Vacio";
+        const weapon = "Vacio";
+
+        const cristal = "0";
+
+        const king = "0";
+        const hypogean = "0";
+        const celestial = "0";
+        const mauler = "0";
+        const graveborn = "0";
+        const wilder = "0";
+        const light = "0";
+
+        const support = "0";
+        const mage = "0";
+        const warrior = "0";
+        const tank = "0";
+        const ranger = "0";
+
+        const newPerfil = {
+            idjugador,
+            mage,
+            ranger,
+            support,
+            tank,
+            warrior,
+            cristal,
+            king,
+            celestial,
+            graveborn,
+            hypogean,
+            light,
+            mauler,
+            wilder
+        };
+
+        const result3 = await pool.query('INSERT INTO perfil SET ?', [newPerfil]);
+
+        for (let i = 0; i < heroes.length; i++) {
+
+            //req.flash('success', ' Probando');
+
+            const heroname = heroes[i].heroname;
+            const clase = heroes[i].clas;
+            const faction = heroes[i].faction;
+            const roll = heroes[i].roll;
+            const attribute = heroes[i].attribute;
+
+            const newCard = {
+                idjugador,
+                heroname,
+                artefacto,
+                artefactovalue,
+                ascension,
+                star,
+                clase,
+                faction,
+                engravings,
+                fi,
+                si,
+                head,
+                body,
+                boots,
+                weapon,
+                roll,
+                attribute
+            };
+
+            const result2 = await pool.query('INSERT INTO card SET ?', [newCard]);
+        }
+    }
 
     res.redirect('setting');
 });

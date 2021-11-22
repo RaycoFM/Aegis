@@ -1,4 +1,5 @@
 -- Heores
+-- UPDATE test.card SET ascension = 'Not Acquired-0' WHERE id > 0 && ascension = 'Not Acquired';
 
 CREATE TABLE heroes(
     id INT(11) NOT NULL,
