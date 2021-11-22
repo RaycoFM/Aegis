@@ -443,6 +443,7 @@ router.post('/modifyuser', isLoggedIn, async(req, res) => {
 
     const { idjugador } = req.body;
     var { admin } = req.body;
+    var { deleteuser } = req.body;
     var { aegis } = req.body;
 
     if (admin) {
@@ -451,8 +452,14 @@ router.post('/modifyuser', isLoggedIn, async(req, res) => {
         admin = 0;
     }
 
+    if (deleteuser) {
+        await pool.query('DELETE FROM users WHERE (id > 0 && idjugador = ?);', [idjugador]);
+        await pool.query('DELETE FROM card WHERE (id > 0 && idjugador = ?);', [idjugador]);
+    } else {
+        await pool.query('UPDATE users SET aegis = ?, admin = ? WHERE (idjugador = ?);', [aegis, admin, idjugador]);
+    }
+
     //const id = await pool.query('SELECT id FROM users WHERE idgugador = ?', [idjugador]);
-    await pool.query('UPDATE users SET aegis = ?, admin = ? WHERE (idjugador = ?);', [aegis, admin, idjugador]);
 
     res.redirect('setting');
 });
