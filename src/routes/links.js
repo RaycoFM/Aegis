@@ -61,7 +61,7 @@ router.post('/search', isLoggedIn, async(req, res) => {
     }
 
 
-    res.render('links/search', { usuarios, card })
+    res.render('links/search', { usuarios, card, usuario })
 
 });
 
