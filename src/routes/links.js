@@ -22,8 +22,49 @@ router.get('/profile/:idjugador', isLoggedIn, async(req, res) => {
     const { idjugador } = req.params;
 
     const perfil = await pool.query('SELECT * FROM perfil WHERE idjugador = ?', [idjugador]);
-    res.render('links/profile', { perfil })
+
+    res.render('links/profile', perfil[0])
 });
+
+router.get('/search', isLoggedIn, async(req, res) => {
+
+    const usuarios = await pool.query('SELECT username,idjugador FROM users order by username');
+
+    res.render('links/search', { usuarios })
+});
+
+router.post('/search', isLoggedIn, async(req, res) => {
+
+    const usuarios = await pool.query('SELECT username,idjugador FROM users order by username');
+
+
+    const { usuario } = req.body;
+
+    const idjugador = usuario.split(' - ')[1];
+
+
+    const card = await pool.query('SELECT * FROM card WHERE idjugador = ? order by heroname', [idjugador]);
+
+    for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
+        if (card[i].ascension == "Not Acquired") {
+            card[i].star = "Not Acquired";
+            card[i].head = "Vacio"
+            card[i].body = "Vacio"
+            card[i].boots = "Vacio"
+            card[i].weapon = "Vacio"
+            card[i].si = "0"
+            card[i].fi = "0"
+            card[i].engravings = "0"
+            card[i].artefacto = "0"
+        }
+    }
+
+
+    res.render('links/search', { usuarios, card })
+
+});
+
 
 router.get('/aegis', isLoggedIn, async(req, res) => {
 
