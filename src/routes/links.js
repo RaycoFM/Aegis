@@ -65,6 +65,213 @@ router.post('/search', isLoggedIn, async(req, res) => {
 
 });
 
+router.post('/search1', isLoggedIn, async(req, res) => {
+
+    usuarios = await pool.query('SELECT username,idjugador FROM users WHERE aegis = 1 order by username');
+    res.render('links/search', { usuarios })
+});
+
+router.post('/search2', isLoggedIn, async(req, res) => {
+
+    usuarios = await pool.query('SELECT username,idjugador FROM users WHERE aegis = 2 order by username');
+    res.render('links/search', { usuarios })
+});
+
+router.post('/search3', isLoggedIn, async(req, res) => {
+
+    usuarios = await pool.query('SELECT username,idjugador FROM users WHERE aegis = 3 order by username');
+    res.render('links/search', { usuarios })
+});
+
+router.post('/Lightbearer/:usuario', isLoggedIn, async(req, res) => {
+
+    const { usuario } = req.params;
+
+    const idjugador = usuario.split(' - ')[1];
+
+
+    const card = await pool.query('SELECT * FROM card WHERE faction = "Lightbearer" and idjugador = ? order by heroname', [idjugador]);
+
+    for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
+        if (card[i].ascension == "Not Acquired") {
+            card[i].star = "Not Acquired";
+            card[i].head = "Vacio"
+            card[i].body = "Vacio"
+            card[i].boots = "Vacio"
+            card[i].weapon = "Vacio"
+            card[i].si = "0"
+            card[i].fi = "0"
+            card[i].engravings = "0"
+            card[i].artefacto = "0"
+        }
+    }
+
+    res.render('links/search', { usuario, card })
+});
+
+router.post('/Mauler/:usuario', isLoggedIn, async(req, res) => {
+
+    const { usuario } = req.params;
+
+    const idjugador = usuario.split(' - ')[1];
+
+
+    const card = await pool.query('SELECT * FROM card WHERE faction = "Mauler" and idjugador = ? order by heroname', [idjugador]);
+
+    for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
+        if (card[i].ascension == "Not Acquired") {
+            card[i].star = "Not Acquired";
+            card[i].head = "Vacio"
+            card[i].body = "Vacio"
+            card[i].boots = "Vacio"
+            card[i].weapon = "Vacio"
+            card[i].si = "0"
+            card[i].fi = "0"
+            card[i].engravings = "0"
+            card[i].artefacto = "0"
+        }
+    }
+
+    res.render('links/search', { usuario, card })
+});
+
+router.post('/Wilder/:usuario', isLoggedIn, async(req, res) => {
+
+    const { usuario } = req.params;
+
+    const idjugador = usuario.split(' - ')[1];
+
+
+    const card = await pool.query('SELECT * FROM card WHERE faction = "Wilder" and idjugador = ? order by heroname', [idjugador]);
+
+    for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
+        if (card[i].ascension == "Not Acquired") {
+            card[i].star = "Not Acquired";
+            card[i].head = "Vacio"
+            card[i].body = "Vacio"
+            card[i].boots = "Vacio"
+            card[i].weapon = "Vacio"
+            card[i].si = "0"
+            card[i].fi = "0"
+            card[i].engravings = "0"
+            card[i].artefacto = "0"
+        }
+    }
+
+    res.render('links/search', { usuario, card })
+});
+
+router.post('/Graveborn/:usuario', isLoggedIn, async(req, res) => {
+
+    const { usuario } = req.params;
+
+    const idjugador = usuario.split(' - ')[1];
+
+
+    const card = await pool.query('SELECT * FROM card WHERE faction = "Graveborn" and idjugador = ? order by heroname', [idjugador]);
+
+    for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
+        if (card[i].ascension == "Not Acquired") {
+            card[i].star = "Not Acquired";
+            card[i].head = "Vacio"
+            card[i].body = "Vacio"
+            card[i].boots = "Vacio"
+            card[i].weapon = "Vacio"
+            card[i].si = "0"
+            card[i].fi = "0"
+            card[i].engravings = "0"
+            card[i].artefacto = "0"
+        }
+    }
+
+    res.render('links/search', { usuario, card })
+});
+
+router.post('/Celestial/:usuario', isLoggedIn, async(req, res) => {
+
+    const { usuario } = req.params;
+
+    const idjugador = usuario.split(' - ')[1];
+
+
+    const card = await pool.query('SELECT * FROM card WHERE faction = "Celestial" and idjugador = ? order by heroname', [idjugador]);
+
+    for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
+        if (card[i].ascension == "Not Acquired") {
+            card[i].star = "Not Acquired";
+            card[i].head = "Vacio"
+            card[i].body = "Vacio"
+            card[i].boots = "Vacio"
+            card[i].weapon = "Vacio"
+            card[i].si = "0"
+            card[i].fi = "0"
+            card[i].engravings = "0"
+            card[i].artefacto = "0"
+        }
+    }
+
+    res.render('links/search', { usuario, card })
+});
+
+router.post('/Hypogean/:usuario', isLoggedIn, async(req, res) => {
+
+    const { usuario } = req.params;
+
+    const idjugador = usuario.split(' - ')[1];
+
+
+    const card = await pool.query('SELECT * FROM card WHERE faction = "Hypogean" and idjugador = ? order by heroname', [idjugador]);
+
+    for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
+        if (card[i].ascension == "Not Acquired") {
+            card[i].star = "Not Acquired";
+            card[i].head = "Vacio"
+            card[i].body = "Vacio"
+            card[i].boots = "Vacio"
+            card[i].weapon = "Vacio"
+            card[i].si = "0"
+            card[i].fi = "0"
+            card[i].engravings = "0"
+            card[i].artefacto = "0"
+        }
+    }
+
+    res.render('links/search', { usuario, card })
+});
+
+router.post('/Dimensional/:usuario', isLoggedIn, async(req, res) => {
+
+    const { usuario } = req.params;
+
+    const idjugador = usuario.split(' - ')[1];
+
+
+    const card = await pool.query('SELECT * FROM card WHERE faction = "Dimensional" and idjugador = ? order by heroname', [idjugador]);
+
+    for (let i = 0; i < card.length; i++) {
+        card[i].ascension = card[i].ascension.split('-')[0];
+        if (card[i].ascension == "Not Acquired") {
+            card[i].star = "Not Acquired";
+            card[i].head = "Vacio"
+            card[i].body = "Vacio"
+            card[i].boots = "Vacio"
+            card[i].weapon = "Vacio"
+            card[i].si = "0"
+            card[i].fi = "0"
+            card[i].engravings = "0"
+            card[i].artefacto = "0"
+        }
+    }
+
+    res.render('links/search', { usuario, card })
+});
+
 
 router.get('/aegis', isLoggedIn, async(req, res) => {
 

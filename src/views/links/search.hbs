@@ -6,31 +6,52 @@
             <div class="card card-body card_hijo" >
                     <h4>SEARCH USER</h4>
 
-                <form action="/links/search" method="POST" class="row g-3">
-                    <div class="col-md-12">
-                        <div class="card-body btn-group m-0 p-0 card-elder w-100" role="group" aria-label="Basic example" >
-                            <ul class="list-group list-group w-100">
-                                <h6>User Name</h6>
-                                <select name="usuario">
-                                    {{#each usuarios}}
-                                        <option >{{username}} - {{idjugador}}</option>
-                                    {{/each}}
-                                </select>
-                            </ul>
-                            </div>
+                    <div class=" row" role="group" aria-label="Basic checkbox toggle button group">
+                      <div class="col-4">
+                      <form action="/links/search1" method="POST" >
+                        <input type="checkbox" class="btn-check" id="btncheck1" name="aegis1" autocomplete="off">
+                        <button class="btn btn-outline-dark w-100" for="btncheck1">Aegis 1</button>
+                      </form>
+                      </div>
+
+                      <div class="col-4">
+                      <form action="/links/search2" method="POST" >
+                        <input type="checkbox" class="btn-check" id="btncheck2" name="aegis2" autocomplete="off">
+                        <button class="btn btn-outline-dark w-100" for="btncheck2">Aegis 2</button>
+                      </form>
+                      </div>
+
+                      <div class="col-4">
+                      <form action="/links/search3" method="POST" >
+                        <input type="checkbox" class="btn-check" id="btncheck3" name="aegis3" autocomplete="off">
+                        <button class="btn btn-outline-dark w-100" for="btncheck3">Aegis 3</button>                      
+                      </form>
+                      </div>
+
+                    </div>
+
+                    <form action="/links/search" method="POST" class="row g-3">
+                        <div class="col-md-12">
+                            <div class="card-body btn-group m-0 p-0 card-elder w-100" role="group" aria-label="Basic example" >
+                                <ul class="list-group list-group w-100">
+                                  <p></p>
+                                    <h6>User Name</h6>
+                                    <select name="usuario">
+                                        {{#each usuarios}}
+                                            <option >{{username}} - {{idjugador}}</option>
+                                        {{/each}}
+                                    </select>
+                                </ul>
+                                </div>
+                            
+                        </div>
+
+                        <div class="form-group p-2">
+                            <h1><button class="btn btn-primary w-100">SEARCH</button></h1>
+                        </div>
                         
                     </div>
-
-                    <div class="form-group p-2">
-                         <h1><button class="btn btn-primary w-100">SEARCH</button></h1>
-                    </div>
-                    
-                </div>
-
-                    
-                    
-                    
-                </form>
+                    </form>
             </div>
         </div>
     </div>
@@ -39,9 +60,53 @@
 <table class="table">
 
     <thead class="table-dark w-100">
-        <tr>
-        <th class="table-dark w-100 text-center" style="padding-top: 1em;">{{usuario}}</th>
-        </tr>
+      <th class="table-dark w-100 text-center" style="padding-top: 1em;">{{usuario}}</th>
+    </thead>
+</table>
+<table class="table">
+    <thead class="table-dark w-100 text-center" >
+        <th class="table-dark text-center" style="padding-top: 1em;">
+          <form action="/links/Lightbearer/{{usuario}}" method="POST" >
+              <input type="checkbox" class="btn-check" id="Lightbearer" name="Lightbearer" autocomplete="off">
+              <button class="btn btn-outline-light w-100" for="Lightbearer">Lightbearer</button>
+          </form>
+        </th>
+          <th class="table-dark text-center" style="padding-top: 1em;">
+            <form action="/links/Mauler/{{usuario}}" method="POST" >
+              <input type="checkbox" class="btn-check" id="Mauler" name="Mauler" autocomplete="off">
+              <button class="btn btn-outline-light w-100" for="Mauler">Mauler</button>
+            </form>
+          </th>
+          <th class="table-dark text-center" style="padding-top: 1em;">
+            <form action="/links/Wilder/{{usuario}}" method="POST" >
+              <input type="checkbox" class="btn-check" id="Wilder" name="Wilder" autocomplete="off">
+              <button class="btn btn-outline-light w-100" for="Wilder">Wilder</button>
+            </form>
+          </th>
+          <th class="table-dark text-center" style="padding-top: 1em;">
+            <form action="/links/Graveborn/{{usuario}}" method="POST" >
+              <input type="checkbox" class="btn-check" id="Graveborn" name="Graveborn" autocomplete="off">
+              <button class="btn btn-outline-light w-100" for="Graveborn">Graveborn</button>
+            </form>
+          </th>
+          <th class="table-dark text-center" style="padding-top: 1em;">
+            <form action="/links/Celestial/{{usuario}}" method="POST" >
+              <input type="checkbox" class="btn-check" id="Celestial" name="Celestial" autocomplete="off">
+              <button class="btn btn-outline-light w-100" for="Celestial">Celestial</button>
+            </form>
+          </th>
+          <th class="table-dark text-center" style="padding-top: 1em;">
+            <form action="/links/Hypogean/{{usuario}}" method="POST" >
+              <input type="checkbox" class="btn-check" id="Hypogean" name="Hypogean" autocomplete="off">
+              <button class="btn btn-outline-light w-100" for="Hypogean">Hypogean</button>
+            </form>
+          </th>
+          <th class="table-dark text-center" style="padding-top: 1em;">
+            <form action="/links/Dimensional/{{usuario}}" method="POST" >
+              <input type="checkbox" class="btn-check" id="Dimensional" name="Dimensional" autocomplete="off">
+              <button class="btn btn-outline-light w-100" for="Dimensional">Dimensional</button>
+            </form>
+          </th>
     </thead>
 
 </table>
