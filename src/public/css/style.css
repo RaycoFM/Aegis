@@ -24,7 +24,11 @@ header nav ul {
 }
 
 header nav ul li {
+    border-width: 1px;
+    font-variant: small-caps;
+    width: 8%;
     float: left;
+    list-style: none;
 }
 
 header nav ul li a {
