@@ -19,7 +19,10 @@ router.get('/Lightbearer/:idjugador', isLoggedIn, async(req, res) => {
 
     const card = await pool.query('SELECT * FROM card WHERE faction = "Lightbearer" and idjugador = ? order by heroname', [idjugador]);
     var ordenar = card;
+
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -28,15 +31,23 @@ router.get('/Lightbearer/:idjugador', isLoggedIn, async(req, res) => {
     for (let i = 0; i < ordenar.length - 1; i++) {
         for (let c = i + 1; c < ordenar.length; c++) {
             if (ordenar[i].ascension < ordenar[c].ascension) {
+
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
+
 
     for (let i = 0; i < card.length; i++) {
         card[i].ascension = card[i].ascension.split('-')[0];
@@ -63,7 +74,9 @@ router.get('/Mauler/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Mauler" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -74,11 +87,17 @@ router.get('/Mauler/:idjugador', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -108,7 +127,9 @@ router.get('/Wilder/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Wilder" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -119,11 +140,17 @@ router.get('/Wilder/:idjugador', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -153,7 +180,9 @@ router.get('/Graveborn/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Graveborn" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -164,11 +193,17 @@ router.get('/Graveborn/:idjugador', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -197,7 +232,9 @@ router.get('/Celestial/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Celestial" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -208,11 +245,17 @@ router.get('/Celestial/:idjugador', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -241,7 +284,9 @@ router.get('/Hypogean/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Hypogean" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -252,11 +297,17 @@ router.get('/Hypogean/:idjugador', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -286,7 +337,9 @@ router.get('/Dimensional/:idjugador', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Dimensional" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -297,11 +350,17 @@ router.get('/Dimensional/:idjugador', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 

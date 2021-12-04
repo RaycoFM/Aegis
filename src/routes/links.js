@@ -46,7 +46,9 @@ router.post('/search', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -57,11 +59,17 @@ router.post('/search', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -113,7 +121,9 @@ router.post('/Lightbearer/:usuario', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Lightbearer" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -124,11 +134,17 @@ router.post('/Lightbearer/:usuario', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -160,7 +176,9 @@ router.post('/Mauler/:usuario', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Mauler" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -171,11 +189,17 @@ router.post('/Mauler/:usuario', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -207,7 +231,9 @@ router.post('/Wilder/:usuario', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Wilder" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -218,11 +244,17 @@ router.post('/Wilder/:usuario', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -254,7 +286,9 @@ router.post('/Graveborn/:usuario', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Graveborn" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -265,11 +299,17 @@ router.post('/Graveborn/:usuario', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -301,7 +341,9 @@ router.post('/Celestial/:usuario', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Celestial" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -312,11 +354,17 @@ router.post('/Celestial/:usuario', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -348,7 +396,9 @@ router.post('/Hypogean/:usuario', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Hypogean" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -359,11 +409,17 @@ router.post('/Hypogean/:usuario', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
@@ -395,7 +451,9 @@ router.post('/Dimensional/:usuario', isLoggedIn, async(req, res) => {
     const card = await pool.query('SELECT * FROM card WHERE faction = "Dimensional" and idjugador = ? order by heroname', [idjugador]);
 
     var ordenar = card;
+    var ascen = [];
     for (let i = 0; i < ordenar.length; i++) {
+        ascen.push(ordenar[i].ascension);
         ordenar[i].ascension = ordenar[i].ascension.split('-')[1];
         ordenar[i].ascension += ordenar[i].star.substr(1, 1);
     }
@@ -406,11 +464,17 @@ router.post('/Dimensional/:usuario', isLoggedIn, async(req, res) => {
             if (ordenar[i].ascension < ordenar[c].ascension) {
                 temp = ordenar[i];
                 ordenar[i] = ordenar[c];
-                card[i] = card[c];
                 ordenar[c] = temp;
-                card[c] = temp;
+
+                temp = ascen[i];
+                ascen[i] = ascen[c];
+                ascen[c] = temp;
+
             }
         }
+    }
+    for (let i = 0; i < ascen.length; i++) {
+        card[i].ascension = ascen[i];
 
     }
 
