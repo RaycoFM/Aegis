@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.35, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: test
+-- Host: 127.0.0.1    Database: prueba
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.4.21-MariaDB
 
@@ -87,35 +87,6 @@ INSERT INTO `heroes` VALUES (1,'Lucrecia','Ranger','Hypogean','Assassin','Agilit
 UNLOCK TABLES;
 
 --
--- Table structure for table `links`
---
-
-DROP TABLE IF EXISTS `links`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `links` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(150) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `fk_user` (`user_id`),
-  CONSTRAINT `fk_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `links`
---
-
-LOCK TABLES `links` WRITE;
-/*!40000 ALTER TABLE `links` DISABLE KEYS */;
-/*!40000 ALTER TABLE `links` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `perfil`
 --
 
@@ -148,7 +119,7 @@ CREATE TABLE `perfil` (
 
 LOCK TABLES `perfil` WRITE;
 /*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` VALUES (1,'32607873','27','80','37','27','27','429','630','261','401','302','402','387','406'),(2,'9014921','0','0','0','0','0','0','0','0','0','0','0','0','0'),(3,'22163829','0','0','0','0','0','0','0','0','0','0','0','0','0'),(4,'22163829','0','0','0','0','0','0','0','0','0','0','0','0','0'),(5,'','0','0','0','0','0','0','0','0','0','0','0','0','0'),(6,'9014921','0','0','0','0','0','0','0','0','0','0','0','0','0'),(7,'Vaiara','0','0','0','0','0','0','0','0','0','0','0','0','0'),(8,'22163829','0','0','0','0','0','0','0','0','0','0','0','0','0');
+INSERT INTO `perfil` VALUES (1,'32607873','27','80','37','27','27','429','630','261','401','302','402','387','406'),(2,'9014921','0','0','0','0','0','0','0','0','0','0','0','0','0'),(3,'22163829','0','0','0','0','0','0','0','0','0','0','0','0','0');
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +144,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('4JgkQYMm3WtP_af0SQy0saBI-E2am8I-',1637682984,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{},\"passport\":{\"user\":35}}');
+INSERT INTO `sessions` VALUES ('axOAitfWFLhpj2HQKT_TieOtWmo8j35V',1637927252,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{},\"passport\":{\"user\":35}}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,4 +185,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-22 16:59:23
+-- Dump completed on 2021-12-05  0:15:52

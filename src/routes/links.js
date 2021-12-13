@@ -707,7 +707,6 @@ router.post('/aegis', isLoggedIn, async(req, res) => {
         playerruleshero.push(player);
     }
 
-    console.log(playerruleshero);
 
     const heronames = await pool.query('SELECT heroname FROM heroes order by heroname');
 
@@ -927,6 +926,7 @@ router.post('/modifyuser', isLoggedIn, async(req, res) => {
     if (deleteuser) {
         await pool.query('DELETE FROM users WHERE (id > 0 && idjugador = ?);', [idjugador]);
         await pool.query('DELETE FROM card WHERE (id > 0 && idjugador = ?);', [idjugador]);
+        await pool.query('DELETE FROM perfil WHERE (id > 0 && idjugador = ?);', [idjugador]);
     } else {
         await pool.query('UPDATE users SET aegis = ?, admin = ? WHERE (idjugador = ?);', [aegis, admin, idjugador]);
     }
