@@ -1133,21 +1133,14 @@ router.post('/edit/:faction/:heroname', isLoggedIn, async(req, res) => {
 
     }
 
-    console.log("---" + ascension + "------");
+    //console.log("---" + ascension + "------");
 
-    var ascensionreal = "";
-    if (ascension.includes("Ascended")) {
-        ascensionreal = "Ascended-7";
-    }
-
-
-    console.log(ascensionreal);
 
 
 
 
     //await pool.query('UPDATE links set ? WHERE id = ?', [newLink, id]);
-    await pool.query('UPDATE card SET artefacto = ?, artefactovalue = ?, ascension = ?, star = ?, engravings = ?, fi = ?, si = ?, head = ?, body = ?, boots = ?, weapon = ? WHERE (idjugador = ? and heroname = ?);', [artefacto, artefactovalue, ascensionreal, Star, engravings, fi, si, Head, Body, Boots, Weapon, idjugador, heroname]);
+    await pool.query('UPDATE card SET artefacto = ?, artefactovalue = ?, ascension = ?, star = ?, engravings = ?, fi = ?, si = ?, head = ?, body = ?, boots = ?, weapon = ? WHERE (idjugador = ? and heroname = ?);', [artefacto, artefactovalue, ascension, Star, engravings, fi, si, Head, Body, Boots, Weapon, idjugador, heroname]);
 
 
     req.flash('success', req.user.username + ' has actualizado a ' + heroname + ' correctamente. ');
