@@ -1061,7 +1061,7 @@ router.post('/edit/:faction/:heroname', isLoggedIn, async(req, res) => {
     const { faction } = req.params;
     const idjugador = req.user.idjugador;
 
-    const { ascension } = req.body;
+    var { ascension } = req.body;
     const { star } = req.body;
     const { engravings } = req.body;
     const { si } = req.body;
@@ -1072,6 +1072,26 @@ router.post('/edit/:faction/:heroname', isLoggedIn, async(req, res) => {
     const { body } = req.body;
     const { weapon } = req.body;
     const { boots } = req.body;
+
+    if (ascension == "Elite")
+        ascension = "Elite-1";
+    if (ascension == "Elite+")
+        ascension = "Elite+-1";
+    if (ascension == "Legendary")
+        ascension = "Legendary-3";
+    if (ascension == "Legendary+")
+        ascension = "Legendary+-4";
+    if (ascension == "Mythic")
+        ascension = "Mythic-5";
+    if (ascension == "Mythic+")
+        ascension = "Mythic+-6";
+    if (ascension == "Ascended")
+        ascension = "Ascended-7";
+
+    //console.log("---" + ascension + "------");
+
+
+
 
     var Star = "";
     var Head = "";
@@ -1130,10 +1150,8 @@ router.post('/edit/:faction/:heroname', isLoggedIn, async(req, res) => {
     }
     if (ascension.split('-')[0] != "Ascended") {
         Star = "A0";
-
     }
 
-    //console.log("---" + ascension + "------");
 
 
 
