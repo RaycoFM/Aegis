@@ -585,6 +585,8 @@ router.post('/aegis', isLoggedIn, async(req, res) => {
             if (queryhero1 != null) {
                 for (let k = 0; k < queryhero1.length; k++) {
 
+                    //console.log(ruleshero[i].nivelascension + '----------' + queryhero1[k].ascension.split('-')[1]);
+
                     if (ruleshero[i].nivelascension <= queryhero1[k].ascension.split('-')[1]) {
 
                         if (ruleshero[i].nivelascension == '7') {
@@ -593,16 +595,15 @@ router.post('/aegis', isLoggedIn, async(req, res) => {
                                 queryhero1[k].ascension = queryhero1[k].ascension.split('-')[0];
                             } else {
                                 var item = queryhero1.indexOf(k);
-                                queryhero1.splice(item, 1);
+                                queryhero1.splice(k, 1);
                                 k = k - 1;
                             }
                         }
 
                     } else {
                         var item = queryhero1.indexOf(k);
-                        queryhero1.splice(item, 1);
+                        queryhero1.splice(k, 1);
                         k = k - 1;
-
                     }
 
                 }
